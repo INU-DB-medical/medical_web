@@ -1,6 +1,6 @@
 body{
     display: flex; /*페이지를 flexbox로 설정*/
-    flex-direction: coulnm; /*세로로 나열*/
+    flex-direction: column; /*세로로 나열*/
     align-items: center; /*수평 중앙 정렬*/
     min-height: 100vh; /*화면 높이*/
     margin:0;
@@ -17,4 +17,14 @@ h1{
     color: rgb(0,77,38);
     margin-bottom: 20px;
     justify-content: center; /*텍스트 수평으로*/
+}
+
+h1::before{
+    content:"";
+    display: inline-block;/*로고 인라인 블록으로 표시*/
+    background-image:url('logo.png');
+    background-size:contain; /*이미지 크기 유지하면서 컨테이너에 맞게 조정*/
+    width: 50px;
+    height: 50px;
+    margin-right:10px;
 }
