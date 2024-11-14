@@ -22,9 +22,10 @@ h1{
 h1::before{
     content:"";
     display: inline-block;/*로고 인라인 블록으로 표시*/
-    background-image:url('logo.png');
+    background-image:url('/logo.png');
     background-size:contain; /*이미지 크기 유지하면서 컨테이너에 맞게 조정*/
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     margin-right:10px;
 }
+
