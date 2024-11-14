@@ -1,0 +1,9 @@
+body{
+    display: flex; /*페이지를 flexbox로 설정*/
+    flex-direction: coulnm; /*세로로 나열*/
+    align-items: center; /*수평 중앙 정렬*/
+    min-height: 100vh; /*화면 높이*/
+    margin:0;
+    background-color: rgb(250, 250, 250);
+    padding-top : 20px;
+}
