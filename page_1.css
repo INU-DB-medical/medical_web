@@ -12,8 +12,9 @@ body{
 h1{
     display:flex;
     align-items: center; /*제목 가운데로*/
-    font-size: 20px;
-    color: rgb(0,0,0);
+    font-size: 40px;
+    font-weight: bold; /*폰트 굵게*/
+    color: rgb(0,77,38);
     margin-bottom: 20px;
     justify-content: center; /*텍스트 수평으로*/
 }
