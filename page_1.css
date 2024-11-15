@@ -74,7 +74,7 @@ button[type="submit"]:hover{
 }
 
 button[type="change"]{
-  width: 100%;
+  width: 350px;
   padding: 10px;
   font-size: 16px;
   color: white;
@@ -82,5 +82,10 @@ button[type="change"]{
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 30px;
+}
+
+/*버튼 눌렸을 때 색 더 진한 녹색이 되도록*/
+button[type="change"]:hover{
+  background-color: RGB(69,160,730);
 }
