@@ -1,100 +1,103 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>인천광역시 의료기관 현황</title>
-        <link rel="stylesheet" href="page_1.css">
-    </head>
-    <body>
-        <h1>인천광역시 의료기관 현황</h1>
-        <form>
-            <!--군구명 선택-->
-            <label for="district">군구명:</label>
-            <select id="district" name="district">
-                <option value="해당없음">해당없음</option>
-                <option value="강화군">강화군</option>
-                <option value="옹진군">옹진군</option>
-                <option value="중구">중구</option>
-                <option value="동구">동구</option>
-                <option value="미추홀구">미추홀구</option>
-                <option value="연수구">연수구</option>
-                <option value="남동구">남동구</option>
-                <option value="부평구">부평구</option>
-                <option value="계양구">계양구</option>
-                <option value="서구">서구</option>
-                <option value="경제청">경제청</option>
-            </select>
-            <br><br>
 
-            <!--병원종별 선택-->
-            <label for="hospitalType">병원종별:</label>
-            <select id="hospitalType" name="hospitalType">
-                <option value="해당없음">해당없음</option>
-                <option value="병원">일반병원</option>
-                <option value="종합병원">종합병원</option>
-                <option value="치과병원">치과병원</option>
-                <option value="요양병원">요양병원</option>
-                <option value="한방병원">한방병원</option>
-                <option value="정신병원">정신병원</option>
-                <option value="의원">의원</option>
-                <option value="치과의원">치과의원</option>
-                <option value="부속의원">부속의원</option>
-                <option value="한의원">한의원</option>
-                <option value="보건소">보건소</option>
-                <option value="보건지소">보건지소</option>
-                <option value="보건진료소">보건진료소</option>
-            </select>
-            <br><br>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인천광역시 의료기관 현황</title>
+    <link rel="stylesheet" href="page_1.css">
+</head>
 
-            <!--진료과목 선택-->
-            <label for="specialty">진료과목:</label>
-            <select id="specialty" name="specialtys">
-                <option value="해당없음">해당없음</option>
-                <option value="응급의학과">응급의학과</option>
-                <option value="내과">내과</option>
-                <option value="소아청소년과">소아청소년과</option>
-                <option value="이비인후과">이비인후과</option>
-                <option value="외과">외과</option>
-                <option value="정형외과">정형외과</option>
-                <option value="신경과">신경과</option>
-                <option value="신경외과">신경외과</option>
-                <option value="흉부외과">흉부외과</option>
-                <option value="마취통증의학과">마취통증의학과</option>
-                <option value="산부인과">산부인과</option>
-                <option value="안과">안과</option>
-                <option value="비뇨의학과">비뇨의학과</option>
-                <option value="영상의학과">영상의학과</option>
-                <option value="진단검사의학과">진단검사의학과</option>
-                <option value="가정의학과">가정의학과</option>
-                <option value="재활의학과">재활의학과</option>
-                <option value="피부과">피부과</option>
-                <option value="성형외과">성형외과</option>
-                <option value="정신건강의학과">정신건강의학과</option>
-                <option value="침구과">침구과</option>
-                <option value="한방재활의학과">한방재활의학과</option>
-                <option value="한방부인과">한방부인과</option>
-                <option value="한방신경정신과">한방신경정신과</option>
-                <option value="치과">치과</option>
-                <option value="구강내과">구강내과</option>
-                <option value="구강병리과">구강병리과</option>
-                <option value="치과보존과">치과보존과</option>
-                <option value="소아치과">소아치과</option>
-                <option value="치아교정과">치아교정과</option>
-                <option value="병리과">병리과</option>
-            </select>
-            <br><br>
+<body>
+    <h1>인천광역시 의료기관 현황</h1>
+    <form>
+        <!--군구명 선택-->
+        <label for="district">군구명:</label>
+        <select id="district" name="district">
+            <option value="해당없음">해당없음</option>
+            <option value="강화군">강화군</option>
+            <option value="옹진군">옹진군</option>
+            <option value="중구">중구</option>
+            <option value="동구">동구</option>
+            <option value="미추홀구">미추홀구</option>
+            <option value="연수구">연수구</option>
+            <option value="남동구">남동구</option>
+            <option value="부평구">부평구</option>
+            <option value="계양구">계양구</option>
+            <option value="서구">서구</option>
+            <option value="경제청">경제청</option>
+        </select>
+        <br><br>
 
-            <!--의료기관명 입력-->
-            <label for="hospitalName">의료기관명:</label>
-            <input type="text" id="hospitalName" name="hospitalName" placeholder="의료기관명을 입력하세요">
-            <br><br>
-  
-            <button type="submit">제출</button>
-        </form>
+        <!--병원종별 선택-->
+        <label for="hospitalType">병원종별:</label>
+        <select id="hospitalType" name="hospitalType">
+            <option value="해당없음">해당없음</option>
+            <option value="병원">일반병원</option>
+            <option value="종합병원">종합병원</option>
+            <option value="치과병원">치과병원</option>
+            <option value="요양병원">요양병원</option>
+            <option value="한방병원">한방병원</option>
+            <option value="정신병원">정신병원</option>
+            <option value="의원">의원</option>
+            <option value="치과의원">치과의원</option>
+            <option value="부속의원">부속의원</option>
+            <option value="한의원">한의원</option>
+            <option value="보건소">보건소</option>
+            <option value="보건지소">보건지소</option>
+            <option value="보건진료소">보건진료소</option>
+        </select>
+        <br><br>
+
+        <!--진료과목 선택-->
+        <label for="specialty">진료과목:</label>
+        <select id="specialty" name="specialtys">
+            <option value="해당없음">해당없음</option>
+            <option value="응급의학과">응급의학과</option>
+            <option value="내과">내과</option>
+            <option value="소아청소년과">소아청소년과</option>
+            <option value="이비인후과">이비인후과</option>
+            <option value="외과">외과</option>
+            <option value="정형외과">정형외과</option>
+            <option value="신경과">신경과</option>
+            <option value="신경외과">신경외과</option>
+            <option value="흉부외과">흉부외과</option>
+            <option value="마취통증의학과">마취통증의학과</option>
+            <option value="산부인과">산부인과</option>
+            <option value="안과">안과</option>
+            <option value="비뇨의학과">비뇨의학과</option>
+            <option value="영상의학과">영상의학과</option>
+            <option value="진단검사의학과">진단검사의학과</option>
+            <option value="가정의학과">가정의학과</option>
+            <option value="재활의학과">재활의학과</option>
+            <option value="피부과">피부과</option>
+            <option value="성형외과">성형외과</option>
+            <option value="정신건강의학과">정신건강의학과</option>
+            <option value="침구과">침구과</option>
+            <option value="한방재활의학과">한방재활의학과</option>
+            <option value="한방부인과">한방부인과</option>
+            <option value="한방신경정신과">한방신경정신과</option>
+            <option value="치과">치과</option>
+            <option value="구강내과">구강내과</option>
+            <option value="구강병리과">구강병리과</option>
+            <option value="치과보존과">치과보존과</option>
+            <option value="소아치과">소아치과</option>
+            <option value="치아교정과">치아교정과</option>
+            <option value="병리과">병리과</option>
+        </select>
+        <br><br>
+
+        <!--의료기관명 입력-->
+        <label for="hospitalName">의료기관명:</label>
+        <input type="text" id="hospitalName" name="hospitalName" placeholder="의료기관명을 입력하세요">
+        <br><br>
+
+        <button type="submit">제출</button>
 
         <!--병원 db 추가 및 삭제 버튼-->
         <br>
         <button type="button" onclick="location.href='page_3.html'">병원 정보 추가/삭제</button>
-    </body>
+    </form>
+
+</body>
 </html>
