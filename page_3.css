@@ -18,3 +18,13 @@ h1{
     margin-bottom: 20px;
     justify-content: center;
 }
+
+h1::before{
+    content:"";
+    display:inline-block;
+    background-image:url("/logo.png");
+    background-size:contain;
+    width:60px;
+    height:60px;
+    margin-right: 10px;
+}
