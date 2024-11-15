@@ -24,8 +24,8 @@ h1::before {
   display: inline-block; /*로고 인라인 블록으로 표시*/
   background-image: url("/logo.png");
   background-size: contain; /*이미지 크기 유지하면서 컨테이너에 맞게 조정*/
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-right: 10px;
 }
 
@@ -39,7 +39,7 @@ form {
   background-color: RGB(233, 245, 236);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*그림자 효과*/
   width: 300px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 label {
