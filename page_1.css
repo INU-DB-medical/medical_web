@@ -64,6 +64,8 @@ button[type="submit"]{
   font-size: 16px;
   color: white;
   background-color:RGB(76, 175, 80);
+  border:none;
+  border-radius: 4px;
   cursor: pointer; /*마우스 버튼 위로 올리면 커서를 포인터로 변경*/
 }
 
