@@ -72,3 +72,15 @@ button[type="submit"]{
 button[type="submit"]:hover{
   background-color: RGB(69, 160, 73);
 }
+
+button[type="change"]{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: RGB(76,176,80);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+}
