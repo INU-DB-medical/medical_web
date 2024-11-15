@@ -57,3 +57,16 @@ input[type="text"]{
   border: 1px solid RGB(162,217,177);
   box-sizing: border-box;
 }
+
+button[type="submit"]{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color:RGB(76, 175, 80);
+  cursor: pointer; /*마우스 버튼 위로 올리면 커서를 포인터로 변경*/
+}
+
+button[type="submit"]:hover{
+  background-color: RGB(69, 160, 73);
+}
