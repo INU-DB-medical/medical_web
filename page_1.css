@@ -24,8 +24,8 @@ h1::before {
   display: inline-block; /*로고 인라인 블록으로 표시*/
   background-image: url("/logo.png");
   background-size: contain; /*이미지 크기 유지하면서 컨테이너에 맞게 조정*/
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
 }
 
