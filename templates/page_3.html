@@ -14,15 +14,15 @@
   <body>
     <h1>병원 정보 관리</h1>
 
-    <button type="button" onclick="location.href='page_add.html'">
+    <button type="button" onclick="location.href='{{ url_for('add')}}'">
       병원 정보 데이터 추가
     </button>
     <br /><br />
-    <button type="button" onclick="location.href='page_edit.html'">
+    <button type="button" onclick="location.href='{{ url_for('edit')}}'">
       병원 정보 데이터 수정
     </button>
     <br /><br />
-    <button type="button" onclick="location.href='page_delete.html'">
+    <button type="button" onclick="location.href='{{ url_for('delete')}}'">
       병원 정보 데이터 삭제
     </button>
     <br /><br />

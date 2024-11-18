@@ -18,6 +18,18 @@ def home():
 def modify():
     return render_template('page_3.html')
 
+@app.route('/modify/add')
+def add():
+    return render_template('page_add.html')
+
+@app.route('/modify/edit')
+def edit():
+    return render_template('page_edit.html')
+
+@app.route('/modify/delete')
+def delete():
+    return render_template('page_delete.html')
+
 @app.route('/search_result', methods=['POST'])
 def search_result():
     district = request.form.get('district')
@@ -45,7 +57,7 @@ def search_result():
     cur.execute(query, params)
     rows = cur.fetchall()
     
-    return render_template('page_2.html', rows=rows)
+    return render_template('page_2.html', rows=rows)    
     
 if __name__ == '__main__':
     app.debug = True
