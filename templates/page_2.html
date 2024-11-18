@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>검색 결과</title>
+    <!-- <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='page_2.css')}}"
+    /> -->
+  </head>
+  <body>
+    <h1>검색 결과</h1>
+
+    {% if rows %}
+    <table border="1">
+      <thead>
+        <tr>
+          <th>군구명</th>
+          <th>병원종별</th>
+          <th>의료기관명</th>
+          <th>소재지</th>
+          <th>별상수</th>
+          <th>진료과목</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+        <tr>
+          <td>{{ row[1] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>{{ row[4] }}</td>
+          <td>{{ row[5] }}</td>
+          <td>{{ row[6] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>검색 결과가 없습니다.</p>
+    {% endif %}
+
+    <a href="/">다시 검색</a>
+  </body>
+</html>
