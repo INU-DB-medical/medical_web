@@ -1,8 +1,11 @@
-from flask import Flask, g, render_template, request
+from flask import Flask, g, render_template, request,redirect, url_for, session
 import sqlite3
 
 app = Flask(__name__)
+app.secret_key='your_secret_key'
 DATEBASE = 'Final_Incheon_hospital.db'
+
+PASSWORD='1234'
 
 def get_db():
     db = getattr(g, 'database', None)
@@ -17,9 +20,30 @@ def get_db():
 def home():
     return render_template('page_1.html')
 
+@app.route('/password')
+def password_page():
+    return render_template('password.html')
+
+@app.route('/verify_password', methods=['POST'])
+def verify_password():
+    entered_password = request.form.get('password')
+    if entered_password == PASSWORD:
+        session['authenticated'] = True 
+        return redirect(url_for('modify')) 
+    else:
+        return "비밀번호가 틀렸습니다. <a href='/password'>다시 시도하기</a>"
+
+
 @app.route('/modify')
 def modify():
+    if not session.get('authenticated'): 
+        return redirect(url_for('password_page')) 
     return render_template('page_3.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('authenticated', None)  
+    return redirect(url_for('home'))
 
 @app.route('/modify/add', methods=['GET', 'POST'])
 def add():
