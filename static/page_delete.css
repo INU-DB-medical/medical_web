@@ -83,3 +83,7 @@ button[type="button"] {
   cursor: pointer;
   margin-top: 15px; /* 병원 삭제 버튼과 간격 추가 */
 }
+
+button[type="button"]:hover {
+  background-color: RGB(69, 160, 73);
+}

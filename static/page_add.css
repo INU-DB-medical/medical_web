@@ -94,3 +94,7 @@ button[type="button"] {
   margin-top: 15px; /* 병원 추가 버튼과 간격 추가 */
   margin-bottom: 15px;
 }
+
+button[type="button"]:hover {
+  background-color: RGB(69, 160, 73);
+}
