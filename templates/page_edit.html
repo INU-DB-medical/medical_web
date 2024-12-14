@@ -43,9 +43,10 @@
           const isHospitalExist = true; 
 
           if (isHospitalExist) {
-              document.getElementById('edit-form').classList.remove('hidden');
-              alert('병원이 확인되었습니다.');
+            document.getElementById('edit-form').classList.remove('hidden');
+            alert('병원이 확인되었습니다. 수정할 항목을 입력하세요.');
           } else {
+              document.getElementById('edit-form').classList.add('hidden');
               alert('해당 병원이 존재하지 않습니다.');
           }
       }
