@@ -1,0 +1,83 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: rgb(240, 248, 245);
+  padding-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  font-weight: bold;
+  color: rgb(0, 77, 38);
+  margin-bottom: 30px;
+}
+
+h1::before {
+  content: "";
+  display: inline-block;
+  background-image: url("image/logo.png");
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.form-container {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgb(162, 217, 177);
+  background-color: rgb(233, 245, 236);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+label {
+  font-size: 16px;
+  color: rgb(51, 51, 51);
+  margin-bottom: 8px;
+  display: block;
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid rgb(162, 217, 177);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  background-color: rgb(76, 175, 80);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgb(69, 160, 73);
+}
+
+.form-container p {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  margin-top: 15px;
+}
