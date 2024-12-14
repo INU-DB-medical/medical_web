@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>병원 정보 삭제</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='page_delete.css')}}"
+    />
+    <script>
+      window.onload = function () {
+        // Flash 메시지가 존재하면 팝업을 띄움
+        var flashMessage = "{{ get_flashed_messages()[0] }}";
+        if (flashMessage) {
+          alert(flashMessage); // 팝업으로 메시지 표시
+        }
+      };
+    </script>
   </head>
   <body>
     <h1>병원 정보 삭제</h1>
@@ -13,5 +26,6 @@
       <br /><br />
       <button type="submit">병원 삭제</button>
     </form>
+    <button type="button" onclick="location.href='/'">홈으로</button>
   </body>
 </html>
