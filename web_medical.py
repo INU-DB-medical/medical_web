@@ -101,7 +101,7 @@ def add():
 
             # DB에 병원 추가 성공
             db.commit()
-            flash("병원 정보가 성공적으로 삭제되었습니다.", "success")
+            flash("병원 정보가 성공적으로 추가되었습니다.", "success")
             
         except Exception as e:
             db.rollback()
@@ -134,7 +134,7 @@ def delete():
             
             # DB에 삭제 사항 반영
             db.commit()
-            flash("병원 정보가 성공적으로 추가되었습니다.", "success")
+            flash("병원 정보가 성공적으로 삭제되었습니다.", "success")
         
         except Exception as e:
             db.rollback()
