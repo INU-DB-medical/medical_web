@@ -2,7 +2,7 @@ from flask import Flask, g, render_template, request
 import sqlite3
 
 app = Flask(__name__)
-DATEBASE = 'Incheon_hospital.db'
+DATEBASE = 'Finally_Incheon_hospital.db'
 
 def get_db():
     db = getattr(g, 'database', None)
@@ -30,34 +30,41 @@ def edit():
 def delete():
     return render_template('page_delete.html')
 
-@app.route('/search_result', methods=['POST'])
+@app.route('/search_result', methods=['GET'])
 def search_result():
-    district = request.form.get('district')
-    hospital_type = request.form.get('hospitalType')
-    specialty = request.form.get('specialty')
-    hospital_name = request.form.get('hospitalName')    
-    
-    query = "SELECT * FROM 인천광역시_의료기관_현황 WHERE 1=1"
+    district = request.args.get('district')  # GET 요청은 request.args 사용
+    hospital_type = request.args.get('hospitalType')
+    specialty = request.args.get('specialty')
+    hospital_name = request.args.get('hospitalName')    
+
+    query = """
+        SELECT H.병원ID, R.군구명, H.의료기관명, H.병원종별, P.진료과목, D.병상수, D.소재지
+        FROM hospital_table H
+        JOIN detail_table D ON H.병원ID = D.병원ID
+        JOIN region_table R ON H.군구코드 = R.군구명코드
+        JOIN part_table P ON H.진료코드 = P.진료과목코드
+    """
     params = []
-    
-    if district != "해당없음":
-        query += " AND 군구명 = ?"
+
+    if district and district != "해당없음":
+        query += " AND R.군구명 = ?"
         params.append(district)
-    if hospital_type != "해당없음":
-        query += " AND 병원종별 = ?"
+    if hospital_type and hospital_type != "해당없음":
+        query += " AND H.병원종별 = ?"
         params.append(hospital_type)
-    if specialty != "해당없음":
-        query += " AND 진료과목 = ?"
+    if specialty and specialty != "해당없음":
+        query += " AND P.진료과목 = ?"
         params.append(specialty)
     if hospital_name:
-        query += " AND 의료기관명 LIKE ?"
+        query += " AND H.의료기관명 LIKE ?"
         params.append(f"%{hospital_name}%")
-            
+
     cur = get_db().cursor()
     cur.execute(query, params)
     rows = cur.fetchall()
-    
-    return render_template('page_2.html', rows=rows)    
+
+    return render_template('page_2.html', rows=rows)
+
     
 if __name__ == '__main__':
     app.debug = True
