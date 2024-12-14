@@ -8,6 +8,15 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='page_add.css')}}"
     />
+    <script>
+      window.onload = function () {
+        // Flash 메시지가 존재하면 팝업을 띄움
+        var flashMessage = "{{ get_flashed_messages()[0] }}";
+        if (flashMessage) {
+          alert(flashMessage); // 팝업으로 메시지 표시
+        }
+      };
+    </script>
   </head>
   <body>
     <h1>병원 정보 추가</h1>

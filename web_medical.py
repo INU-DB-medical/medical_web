@@ -1,4 +1,4 @@
-from flask import Flask, g, render_template, request,redirect, url_for, session
+from flask import Flask, g, render_template, request,redirect, url_for, session, flash
 import sqlite3
 
 app = Flask(__name__)
@@ -68,7 +68,7 @@ def add():
             if district:
                 district = district[0]
             else:
-                return "해당 군구명이 존재하지 않습니다."
+                flash("해당 군구명이 존재하지 않습니다.", "success")
             
             # 진료과목 코드를 얻기 위한 쿼리
             cursor.execute("SELECT 진료과목코드 FROM part_table WHERE 진료과목 = ?", (specialty,))
@@ -76,7 +76,7 @@ def add():
             if specialty:
                 specialty = specialty[0]
             else:
-                return "해당 진료과목이 존재하지 않습니다."
+                flash("해당 진료과목이 존재하지 않습니다.", "success")
             
             cursor.execute("""
                 SELECT 1 FROM hospital_table H
@@ -101,7 +101,8 @@ def add():
 
             # DB에 병원 추가 성공
             db.commit()
-            return "병원 정보가 성공적으로 추가되었습니다!"
+            flash("병원 정보가 성공적으로 삭제되었습니다.", "success")
+            
         except Exception as e:
             db.rollback()
             return f"오류 발생: {str(e)}"
@@ -125,7 +126,7 @@ def delete():
             existing_record = cursor.fetchone()
 
             if not existing_record:
-                return "해당 병원 ID는 존재하지 않습니다."
+                flash("해당 병원 ID는 존재하지 않습니다.", "success")
             
             # 병원 관련 데이터 삭제
             cursor.execute("DELETE FROM detail_table WHERE 병원ID = ?", (hospital_id,))
@@ -133,7 +134,7 @@ def delete():
             
             # DB에 삭제 사항 반영
             db.commit()
-            return "병원 정보가 성공적으로 삭제되었습니다!"
+            flash("병원 정보가 성공적으로 추가되었습니다.", "success")
         
         except Exception as e:
             db.rollback()
