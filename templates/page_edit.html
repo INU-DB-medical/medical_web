@@ -26,7 +26,19 @@
 
       <div id="updated-field" style="display: none; margin-top: 20px; color: green;">
         <h3>수정된 데이터:</h3>
-        <ul id="updated-list"></ul>
+        <table border="1" style="border-collapse: collapse; width: 100%; text-align: left;">
+          <thead>
+            <tr>
+              <th>병원ID</th>
+              <th>군구코드</th>
+              <th>의료기관명</th>
+              <th>병원종별</th>
+              <th>진료코드</th>
+            </tr>
+          </thead>
+          <tbody id="updated-table-body">
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -109,10 +121,18 @@
       }
 
       function displayUpdatedData(records) {
-        const updatedList = document.getElementById('updated-list');
+        const updatedList = document.getElementById('updated-table-body');
         updatedList.innerHTML = records
-            .map(record => `<li>${JSON.stringify(record)}</li>`)
-            .join('');
+          .map(record => `
+            <tr>
+              <td>${record[0]}</td>
+              <td>${record[1]}</td>
+              <td>${record[2]}</td>
+              <td>${record[3]}</td>
+              <td>${record[4]}</td>
+            </tr>`
+          )
+          .join('');
         document.getElementById('updated-field').style.display = 'block';
       }
     </script>
