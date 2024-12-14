@@ -30,25 +30,47 @@ def add():
         num_beds = request.form.get('bed')
         address = request.form.get('address')
 
-        # 데이터베이스에 삽입
+        # 데이터베이스에 추가전에 중복 검사
         try:
             db = get_db()
             cursor = db.cursor()
+            
+             # 군구명 코드를 얻기 위한 쿼리
+            cursor.execute("SELECT 군구명코드 FROM region_table WHERE 군구명 = ?", (district,))
+            district = cursor.fetchone()
+            if district:
+                district = district[0]
+            else:
+                return "해당 군구명이 존재하지 않습니다."
+            
+            # 진료과목 코드를 얻기 위한 쿼리
+            cursor.execute("SELECT 진료과목코드 FROM part_table WHERE 진료과목 = ?", (specialty,))
+            specialty = cursor.fetchone()
+            if specialty:
+                specialty = specialty[0]
+            else:
+                return "해당 진료과목이 존재하지 않습니다."
+            
+            cursor.execute("""
+                SELECT 1 FROM hospital_table H
+                JOIN part_table P ON H.진료코드 = P.진료과목코드
+                WHERE H.병원ID = ? AND P.진료과목 = ?
+            """, (hospital_id, specialty))
+            existing_record = cursor.fetchone()
+
+            if existing_record:
+                return "해당 병원 ID와 진료과목이 이미 존재합니다."
+
+            # 데이터베이스에 추가
+            cursor.execute("""
+                INSERT INTO hospital_table (병원ID, 군구명코드, 의료기관명, 병원종별, 진료코드)
+                VALUES (?, ?, ?, ?, ?)
+            """, (hospital_id, district, hospital_name, hospital_type, specialty))
 
             cursor.execute("""
-                INSERT INTO hospital_table (병원ID, 병원종별, 의료기관명)
+                INSERT INTO detail_table (병원ID, 병상수, 소재지)
                 VALUES (?, ?, ?)
-            """, (hospital_id, hospital_type, hospital_name))
-
-            cursor.execute("""
-                INSERT INTO detail_table (병원ID, 소재지, 병상수)
-                VALUES (?, ?, ?)
-            """, (hospital_id, address, num_beds))
-
-            cursor.execute("""
-                INSERT INTO region_table (병원ID, 군구명)
-                VALUES (?, ?)
-            """, (hospital_id, district))
+            """, (hospital_id, num_beds, address))
 
             # DB에 병원 추가 성공
             db.commit()
@@ -77,7 +99,7 @@ def search_result():
         SELECT H.병원ID, R.군구명, H.병원종별, H.의료기관명, D.소재지, D.병상수, P.진료과목
         FROM hospital_table H
         JOIN detail_table D ON H.병원ID = D.병원ID
-        JOIN region_table R ON H.군구코드 = R.군구명코드
+        JOIN region_table R ON H.군구명코드 = R.군구명코드
         JOIN part_table P ON H.진료코드 = P.진료과목코드
     """
     params = []
