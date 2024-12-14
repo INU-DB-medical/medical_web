@@ -2,7 +2,7 @@ from flask import Flask, g, render_template, request
 import sqlite3
 
 app = Flask(__name__)
-DATEBASE = 'Finally_Incheon_hospital.db'
+DATEBASE = 'Final_Incheon_hospital.db'
 
 def get_db():
     db = getattr(g, 'database', None)
