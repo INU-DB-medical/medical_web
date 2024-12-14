@@ -38,7 +38,7 @@ def search_result():
     hospital_name = request.args.get('hospitalName')    
 
     query = """
-        SELECT H.병원ID, R.군구명, H.의료기관명, H.병원종별, P.진료과목, D.병상수, D.소재지
+        SELECT H.병원ID, R.군구명, H.병원종별, H.의료기관명, D.소재지, D.병상수, P.진료과목
         FROM hospital_table H
         JOIN detail_table D ON H.병원ID = D.병원ID
         JOIN region_table R ON H.군구코드 = R.군구명코드
