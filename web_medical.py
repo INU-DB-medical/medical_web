@@ -65,6 +65,19 @@ def search_result():
 
     return render_template('page_2.html', rows=rows)
 
+@app.route('/check_hospital', methods=['POST'])
+def check_hospital():
+    hospital_id = request.json.get('hospitalId')  
+    query = "SELECT 1 FROM hospital_table WHERE 병원ID = ?"
+    cur = get_db().cursor()
+    cur.execute(query, (hospital_id,))
+    result = cur.fetchone()  
+
+    if result:
+        return {"exists": True}
+    else:
+        return {"exists": False}
+
     
 if __name__ == '__main__':
     app.debug = True

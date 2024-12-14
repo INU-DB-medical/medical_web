@@ -43,16 +43,27 @@
               return;
           }
 
-          //일단 있다고 하자~ -> db 수정하면 이 코드도 수정
-          const isHospitalExist = true; 
-
-          if (isHospitalExist) {
-            document.getElementById('edit-form').style.display = 'block';
-            alert('병원이 확인되었습니다. 수정할 항목을 입력하세요.');
-          } else {
-              document.getElementById('edit-form').style.display = 'none';
-              alert('해당 병원이 존재하지 않습니다.');
-          }
+          fetch('/check_hospital', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ hospitalId: hospitalId }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.exists) {
+                document.getElementById('edit-form').style.display = 'block';
+                alert('병원이 확인되었습니다. 수정할 항목을 입력하세요.');
+            } else {
+                document.getElementById('edit-form').style.display = 'none';
+                alert('해당 병원이 존재하지 않습니다.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('오류가 발생했습니다. 다시 시도해주세요.');
+          });
       }
 
       function submitForm() {
