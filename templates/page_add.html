@@ -1,7 +1,120 @@
 <!DOCTYPE html>
-<html>
-  <head> </head>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>병원 정보 추가</title>
+  </head>
   <body>
-    <h1>Add function page</h1>
+    <h1>병원 정보 추가</h1>
+    <form>
+      <label for="district">군구명:</label>
+      <select id="district" name="district">
+        <option value="강화군">강화군</option>
+        <option value="옹진군">옹진군</option>
+        <option value="중구">중구</option>
+        <option value="동구">동구</option>
+        <option value="미추홀구">미추홀구</option>
+        <option value="연수구">연수구</option>
+        <option value="남동구">남동구</option>
+        <option value="부평구">부평구</option>
+        <option value="계양구">계양구</option>
+        <option value="서구">서구</option>
+        <option value="경제청">경제청</option>
+      </select>
+      <br /><br />
+
+      <label for="hospitalType">병원종별:</label>
+      <select id="hospitalType" name="hospitalType">
+        <option value="병원">일반병원</option>
+        <option value="종합병원">종합병원</option>
+        <option value="치과병원">치과병원</option>
+        <option value="요양병원">요양병원</option>
+        <option value="한방병원">한방병원</option>
+        <option value="정신병원">정신병원</option>
+        <option value="의원">의원</option>
+        <option value="치과의원">치과의원</option>
+        <option value="부속의원">부속의원</option>
+        <option value="한의원">한의원</option>
+        <option value="보건소">보건소</option>
+        <option value="보건지소">보건지소</option>
+        <option value="보건진료소">보건진료소</option>
+      </select>
+      <br /><br />
+
+      <label for="specialty">진료과목:</label>
+      <select id="specialty" name="specialty">
+        <option value="해당없음">해당없음</option>
+        <option value="가정의학과">가정의학과</option>
+        <option value="결핵과">결핵과</option>
+        <option value="구강내과">구강내과</option>
+        <option value="구강병리과">구강병리과</option>
+        <option value="구강안악면방사선과">구강안악면방사선과</option>
+        <option value="구강악안면외과">구강악안면외과</option>
+        <option value="내과">내과</option>
+        <option value="마취통증의학과">마취통증의학과</option>
+        <option value="방사선종양학과">방사선종양학과</option>
+        <option value="병리과">병리과</option>
+        <option value="보건소">보건소</option>
+        <option value="보건지소">보건지소</option>
+        <option value="보건진료소">보건진료소</option>
+        <option value="비뇨의학과">비뇨의학과</option>
+        <option value="사상체질과">사상체질과</option>
+        <option value="산부인과">산부인과</option>
+        <option value="성형외과">성형외과</option>
+        <option value="소아청소년과">소아청소년과</option>
+        <option value="소아치과">소아치과</option>
+        <option value="신경과">신경과</option>
+        <option value="신경외과">신경외과</option>
+        <option value="심장혈관흉부외과">심장혈관흉부외과</option>
+        <option value="안과">안과</option>
+        <option value="영상의학과">영상의학과</option>
+        <option value="예방치과">예방치과</option>
+        <option value="외과">외과</option>
+        <option value="응급의학과">응급의학과</option>
+        <option value="이비인후과">이비인후과</option>
+        <option value="재할의학과">재할의학과</option>
+        <option value="정신건강의학과">정신건강의학과</option>
+        <option value="정형외과">정형외과</option>
+        <option value="직업환경의학과">직업환경의학과</option>
+        <option value="진단검사의학과">진단검사의학과</option>
+        <option value="치과">치과</option>
+        <option value="치과교정과">치과교정과</option>
+        <option value="치과보존과">치과보존과</option>
+        <option value="치과보철과">치과보철과</option>
+        <option value="치주과">치주과</option>
+        <option value="침구과">침구과</option>
+        <option value="통합치의학과">통합치의학과</option>
+        <option value="피부과">피부과</option>
+        <option value="한방내과">한방내과</option>
+        <option value="한방부인과">한방부인과</option>
+        <option value="한방소아과">한방소아과</option>
+        <option value="한방신경정신과">한방신경정신과</option>
+        <option value="한방응급과">한방응급과</option>
+        <option value="한방재활의학과">한방재활의학과</option>
+        <option value="핵의학과">핵의학과</option>
+        <option value="흉부외과">흉부외과</option>
+        <option value="한방안·이비인후·피부과">한방안·이비인후·피부과</option>
+      </select>
+      <br /><br />
+
+      <label for="hospitalId">병원 ID:</label>
+      <input type="number" id="hospitalId" name="hospitalId" required />
+      <br /><br />
+
+      <label for="hospitalName">병원 이름:</label>
+      <input type="text" id="hospitalName" name="hospitalName" required />
+      <br /><br />
+
+      <label for="numBeds">병상수:</label>
+      <input type="number" id="bed" name="bed" required />
+      <br /><br />
+
+      <label for="address">소재지:</label>
+      <input type="text" id="address" name="address" required />
+      <br /><br />
+
+      <button type="submit">병원 추가</button>
+    </form>
   </body>
 </html>
