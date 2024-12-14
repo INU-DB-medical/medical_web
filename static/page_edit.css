@@ -1,0 +1,41 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: rgb(240,248,245);
+    padding-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(0,77,38);
+    margin-bottom: 20px;
+    justify-content: center;
+}
+ 
+
+label{
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(76,175,80);
+    border : none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
