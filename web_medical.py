@@ -153,7 +153,7 @@ def search_result():
         JOIN detail_table D ON H.병원ID = D.병원ID
         JOIN region_table R ON H.군구명코드 = R.군구명코드
         JOIN part_table P ON H.진료코드 = P.진료과목코드
-        GROUP BY H.병원ID, R.군구명, H.병원종별, H.의료기관명, D.소재지, D.병상수
+        
     """
     params = []
 
@@ -169,6 +169,10 @@ def search_result():
     if hospital_name:
         query += " AND H.의료기관명 LIKE ?"
         params.append(f"%{hospital_name}%")
+        
+    query += """
+        GROUP BY H.병원ID, R.군구명, H.병원종별, H.의료기관명, D.소재지, D.병상수
+    """
 
     cur = get_db().cursor()
     cur.execute(query, params)
