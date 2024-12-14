@@ -192,7 +192,7 @@ def update_hospital():
     new_value = data.get('newValue')     # 새로운 값
 
     column_map = {
-        "region-code": "군구코드",
+        "region-code": "군구명코드",
         "hospital-name": "의료기관명",
         "hospital-type": "병원종별"
     }
