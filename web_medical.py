@@ -111,8 +111,33 @@ def add():
 def edit():
     return render_template('page_edit.html')
 
-@app.route('/modify/delete')
+@app.route('/modify/delete', methods=['GET', 'POST'])
 def delete():
+    if request.method == 'POST':
+        hospital_id = request.form.get('hospitalId')
+        
+        try:
+            db = get_db()
+            cursor = db.cursor()
+            
+            # 병원ID가 존재하는지 확인
+            cursor.execute("SELECT 1 FROM hospital_table WHERE 병원ID = ?", (hospital_id,))
+            existing_record = cursor.fetchone()
+
+            if not existing_record:
+                return "해당 병원 ID는 존재하지 않습니다."
+            
+            # 병원 관련 데이터 삭제
+            cursor.execute("DELETE FROM detail_table WHERE 병원ID = ?", (hospital_id,))
+            cursor.execute("DELETE FROM hospital_table WHERE 병원ID = ?", (hospital_id,))
+            
+            # DB에 삭제 사항 반영
+            db.commit()
+            return "병원 정보가 성공적으로 삭제되었습니다!"
+        
+        except Exception as e:
+            db.rollback()
+            return f"오류 발생: {str(e)}"
     return render_template('page_delete.html')
 
 @app.route('/search_result', methods=['GET'])
