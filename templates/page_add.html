@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>병원 정보 추가</h1>
-    <form>
+    <form action="/modify/add" method="POST">
       <label for="district">군구명:</label>
       <select id="district" name="district">
         <option value="강화군">강화군</option>
@@ -44,7 +44,6 @@
 
       <label for="specialty">진료과목:</label>
       <select id="specialty" name="specialty">
-        <option value="해당없음">해당없음</option>
         <option value="가정의학과">가정의학과</option>
         <option value="결핵과">결핵과</option>
         <option value="구강내과">구강내과</option>

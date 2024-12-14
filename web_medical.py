@@ -18,8 +18,44 @@ def home():
 def modify():
     return render_template('page_3.html')
 
-@app.route('/modify/add')
+@app.route('/modify/add', methods=['GET', 'POST'])
 def add():
+    if request.method == 'POST':
+        # 폼 데이터 가져오기
+        district = request.form.get('district')
+        hospital_type = request.form.get('hospitalType')
+        specialty = request.form.get('specialty')
+        hospital_id = request.form.get('hospitalId')
+        hospital_name = request.form.get('hospitalName')
+        num_beds = request.form.get('bed')
+        address = request.form.get('address')
+
+        # 데이터베이스에 삽입
+        try:
+            db = get_db()
+            cursor = db.cursor()
+
+            cursor.execute("""
+                INSERT INTO hospital_table (병원ID, 병원종별, 의료기관명)
+                VALUES (?, ?, ?)
+            """, (hospital_id, hospital_type, hospital_name))
+
+            cursor.execute("""
+                INSERT INTO detail_table (병원ID, 소재지, 병상수)
+                VALUES (?, ?, ?)
+            """, (hospital_id, address, num_beds))
+
+            cursor.execute("""
+                INSERT INTO region_table (병원ID, 군구명)
+                VALUES (?, ?)
+            """, (hospital_id, district))
+
+            # DB에 병원 추가 성공
+            db.commit()
+            return "병원 정보가 성공적으로 추가되었습니다!"
+        except Exception as e:
+            db.rollback()
+            return f"오류 발생: {str(e)}"
     return render_template('page_add.html')
 
 @app.route('/modify/edit')
