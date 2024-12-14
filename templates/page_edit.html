@@ -7,34 +7,30 @@
 
       <label for="hospital-id">병원 ID 입력</label>
       <input type="number" id="hospital-id" name="hospital-id" placeholder="병원 ID를 입력하세요" required>
-
       <button type="button" onclick="searchHospital()">검색</button>
 
-      <div id="edit-form" class="hidden">
+      <div id="edit-form" style="display: none;">
         <label for="attribute">수정할 항목 선택</label>
         <select id="attribute" name="attribute" required>
             <option value="">-- 선택하세요 --</option>
             <option value="region-code">군구코드</option>
             <option value="hospital-name">의료기관명</option>
             <option value="hospital-type">병원종별</option>
-            <option value="medical-code">진료코드</option>
         </select>
 
         <label for="new-value">새로운 값 입력</label>
         <input type="text" id="new-value" name="new-value" placeholder="새로운 값을 입력하세요" required>
 
-        <div class="btn-container">
-            <button type="button" onclick="submitForm()">수정</button>
-            <button type="button" onclick="goBack()">전 페이지로</button>
-        </div>
+        <button type="button" onclick="submitForm()">수정</button>
+      </div>
+
+      <div id="updated-field" style="display: none; margin-top: 20px; color: green;">
+        <h3>수정된 데이터:</h3>
+        <ul id="updated-list"></ul>
       </div>
     </div>
 
     <script>
-      window.onload = function() {
-        document.getElementById('edit-form').style.display='none';
-      };
-      
       function searchHospital() {
           const hospitalId = document.getElementById('hospital-id').value;
 
@@ -50,7 +46,12 @@
             },
             body: JSON.stringify({ hospitalId: hospitalId }),
           })
-          .then(response => response.json())
+          .then(response => {
+            if (!response.ok) {
+                throw new Error('병원 검색 중 오류 발생');
+            }
+            return response.json();
+          })
           .then(data => {
             if (data.exists) {
                 document.getElementById('edit-form').style.display = 'block';
@@ -61,7 +62,7 @@
             }
           })
           .catch(error => {
-            console.error('Error:', error);
+            console.error(error);
             alert('오류가 발생했습니다. 다시 시도해주세요.');
           });
       }
@@ -76,11 +77,43 @@
               return;
           }
 
-          alert(`병원 ID: ${hospitalId}, 수정할 항목: ${attribute}, 새로운 값: ${newValue}`);
+          fetch('/update_hospital', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                hospitalId: hospitalId,
+                attribute: attribute,
+                newValue: newValue
+            }),
+          })
+          .then(response => {
+            if (!response.ok) {
+                throw new Error('수정 요청 중 오류 발생');
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.success) {
+                alert(data.message);
+                displayUpdatedData(data.updatedRecords);
+            } else {
+                alert(`수정 실패: ${data.message}`);
+            }
+          })
+          .catch(error => {
+              console.error(error);
+              alert('오류가 발생했습니다. 다시 시도해주세요.');
+          });
       }
 
-      function goBack() {
-          window.history.back();
+      function displayUpdatedData(records) {
+        const updatedList = document.getElementById('updated-list');
+        updatedList.innerHTML = records
+            .map(record => `<li>${JSON.stringify(record)}</li>`)
+            .join('');
+        document.getElementById('updated-field').style.display = 'block';
       }
     </script>
 </body>
