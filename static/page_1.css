@@ -48,37 +48,37 @@ label {
 }
 
 select,
-input[type="text"]{
+input[type="text"] {
   width: 100%;
-  padding : 8px;
+  padding: 8px;
   margin-top: 5px;
   margin-bottom: 15px;
   border-radius: 4px;
-  border: 1px solid RGB(162,217,177);
+  border: 1px solid RGB(162, 217, 177);
   box-sizing: border-box;
 }
 
-button[type="submit"]{
+button[type="submit"] {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   color: white;
-  background-color:RGB(76, 175, 80);
-  border:none;
+  background-color: RGB(76, 175, 80);
+  border: none;
   border-radius: 4px;
   cursor: pointer; /*마우스 버튼 위로 올리면 커서를 포인터로 변경*/
 }
 
-button[type="submit"]:hover{
+button[type="submit"]:hover {
   background-color: RGB(69, 160, 73);
 }
 
-button[type="button"]{
+button[type="button"] {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   color: white;
-  background-color: RGB(76,176,80);
+  background-color: RGB(76, 176, 80);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -86,6 +86,6 @@ button[type="button"]{
 }
 
 /*버튼 눌렸을 때 색 더 진한 녹색이 되도록*/
-button[type="button"]:hover{
-  background-color: RGB(69,160,730);
+button[type="button"]:hover {
+  background-color: RGB(69, 160, 730);
 }
