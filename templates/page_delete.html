@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html>
-  <head> </head>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>병원 정보 삭제</title>
+  </head>
   <body>
-    <h1>Delete function page</h1>
+    <h1>병원 정보 삭제</h1>
+    <form action="/modify/delete" method="POST">
+      <label for="hospitalId">병원 ID:</label>
+      <input type="number" id="hospitalId" name="hospitalId" required />
+      <br /><br />
+      <button type="submit">병원 삭제</button>
+    </form>
   </body>
 </html>
